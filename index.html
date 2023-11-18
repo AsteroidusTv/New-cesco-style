@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">    
+        <link rel="stylesheet" type="text/css" href="./styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./styles/header.css">
+        <link rel="stylesheet" type="text/css" href="./styles/postChat.css">
+        <link rel="stylesheet" type="text/css" href="./styles/popups.css">
+        <script type="text/javascript" src="./scripts/main.js" defer></script>  
+        <script type="text/javascript" src="./scripts/navBar.js" defer></script>
+        <script type="text/javascript" src="./scripts/chatBar.js" defer></script>
+        <script type="text/javascript" src="./scripts/popups.js" defer></script>
+        <title>New-new-cesco</title>
+    </head>
+    <body>
+        <!-- The header on the top of the page -->
+        <header class="main-header" id="mainHeader">
+            <h1 id="mainTitle" class="main-title">cesco</h1>
+            <div id="headerSeparator" class="header-separator"></div>
+            <div id="headerLinks" class="header-links">
+                <a id="headerLink" class="header-link" onclick="openPopup('signInPopup')">Connexion</a>
+                <a id="headerLink" class="header-link" onclick="openPopup('signUpPopup')">Inscription</a>
+                <!-- <a id="headerLink" class="header-link">Déconnexion</a> -->
+                <a id="headerLink" class="header-link" onclick="openPopup('editorPopup')">Nouveau</a>
+                <a id="headerLink" class="header-link" onclick="openPopup('settingsPopup')">Paramètres</a>
+                <!-- <a id="headerLink" class="header-link" href="#about">À propos</a>  -->
+            </div>
+            <div id="search" class="search">
+                <label id="searchLabel" class="search-label" for="search-input"><img class="search-icon" src="./svgs/search.svg" alt="search icon"></label>
+                <input class="search-input" placeholder="Recherche" name="search-input" type="text">
+            </div>
+            <!-- Hamburger menu -->
+            <div id="hamburgerMenu" class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </header>
+        <!-- The main section that contains post and chat -->
+        <main>
+            <!-- The post section -->
+            <div class="post">
+                <header class="post-header">
+                    <h1 class="post-header-title">post</h1>
+                    <select id="postSelector" class="post-header-select" name="postSelector">
+                        <option value="latest">Les plus récents en premier</option>
+                        <option value="random">Aléatoire</option>
+                        <option value="positive">Les mieux notés en premier (votes positifs - votes négatifs)</option>
+                        <option value="positiveVotes">Avec le plus de votes positifs en premier</option>
+                        <option value="oldest">Les plus anciens en premier</option>
+                    </select>
+                    <button class="post-header-new"><img class="post-header-new-img" src="./svgs/new.svg" alt="new post button"></button>
+                    <button class="post-header-refresh"></button>
+                </header>
+                <div class="post-scroll">
+                    <div class="post-message">
+                        <header class="post-message-header">
+                            <img class="post-message-header-picture" src="./templatesContent/profil.png" alt="{insert username} profile picture" onclick="openPopup('userPagePopup')">
+                            <div class="post-message-header-infos">
+                                <p>Asteroidus</p>
+                                <p>11.9.2001</p>
+                            </div>
+                        </header>
+                        <div class="post-message-text">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda dolores architecto veritatis. Recusandae ad consectetur culpa ipsam ab eaque unde dolor? Eveniet officia, sint quibusdam adipisci enim sapiente exercitationem fuga?
+                            <img class="post-message-img" src="./templatesContent/space.jpeg" alt="post image">                            
+                        </div>
+                        <footer class="post-message-footer">
+                            <button class="post-message-footer-button except" onclick="openPopup('commentsPopup')"><img class="post-message-footer-button-img" src="./svgs/comments.svg" alt="comment button"></button>
+                            <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/expandWhite.svg" alt="comment button"><p class="post-message-footer-button-text">2</p></button>
+                            <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/middlevote.svg" alt="comment button"><p class="post-message-footer-button-text">6</p></button>
+                            <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/downvote.svg" alt="comment button"><p class="post-message-footer-button-text">8</p></button>
+                            <button class="post-message-footer-button except" onclick="openPopup('reportPopup')"><img class="post-message-footer-button-img" src="./svgs/report.svg" alt="comment button"></button>
+                            <button id="postMessageFooterButtonDelete" class="post-message-footer-button"><img class="post-footer-button-img" src="./svgs/delete.svg" alt="comment button"></button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <!-- The chat section -->
+            <div id="chat" class="chat">
+                <button id="openDrawer" class="chat-open-drawer"><img class="chat-open-drawer-img" src="./svgs/expand.svg" alt="open chat drawer"></button>
+                <div id="chatHeader" class="chat-header">
+                    <h1 class="chat-header-title">chat</h1>
+                </div>
+                <div id="chatScroll" class="chat-scroll">
+                    <div class="chat-message">
+                        <header class="chat-message-header">
+                            <img  class="chat-message-header-picture" src="./templatesContent/profil.png" alt="{insert username} profile picture">
+                            <div class="chat-message-header-infos">
+                                <p>Asteroidus</p>
+                                <p>11.9.2001</p>
+                            </div>
+                        </header>
+                        <div class="chat-message-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                    </div>
+                    <div class="chat-message stranger">
+                        <header class="chat-message-header">
+                            <img  class="chat-message-header-picture stranger" src="./templatesContent/profil2.jpg" alt="{insert username} profile picture">
+                            <div class="chat-message-header-infos stranger">
+                                <p>Judemont</p>
+                                <p>11.9.2001</p>
+                            </div>
+                        </header>
+                        <div class="chat-message-text stranger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                    </div>
+                </div>
+                <footer id="chatFooter" class="chat-footer">
+                    <input class="chat-footer-input" type="text" placeholder="Message">
+                    <button class="chat-footer-button"><img class="chat-footer-button-img" src="./svgs/send.svg" alt="send button"></button>
+                </footer>
+            </div>
+        </main>
+        <!-- Connection popup -->
+        <div id="signInPopup" class="popup">
+            <div class="popup-content">
+                <button class="popup-content-close" onclick="closePopup('signInPopup')"></button>
+                <div class="popup-content-left">
+                    <h1 class="popup-content-title">Connexion</h1>
+                    <a class="popup-content-link" onclick="closePopup('signInPopup'); openPopup('signUpPopup')">Pas de compte ?</a>
+                </div>
+                <div class="popup-content-right">
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="text" required="required">
+                        <span class="popup-content-inputbox-span">Nom d'utilisateur</span>
+                    </div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="password" required="required">
+                        <span class="popup-content-inputbox-span">Mot de passe</span>
+                    </div>
+                    <button class="popup-content-button">Connexion</button>                    
+                </div>
+            </div>
+        </div>
+        <!-- Inscription popup -->
+        <div id="signUpPopup" class="popup">
+            <div class="popup-content">
+                <button class="popup-content-close" onclick="closePopup('signUpPopup')"></button>
+                <div id="popupContentLeft" class="popup-content-left">
+                    <h1 id="popupContentTitle" class="popup-content-title">Inscription</h1>
+                    <a id="popupContentLink" class="popup-content-link" onclick="closePopup('signUpPopup'); openPopup('signInPopup')">Pas de compte ?</a>
+                </div>
+                <div id="popupContentRight" class="popup-content-right">
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="text" required="required">
+                        <span class="popup-content-inputbox-span">Nom d'utilisateur</span>
+                    </div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="password" required="required">
+                        <span class="popup-content-inputbox-span">Mot de passe</span>
+                    </div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="password" required="required">
+                        <span class="popup-content-inputbox-span">Confirmer le mot de passe</span>
+                    </div>
+                    <button class="popup-content-button">Connexion</button>                    
+                </div>
+            </div>
+        </div>
+        <!-- Settings popup -->
+        <div id="settingsPopup" class="popup">
+            <div class="popup-content">
+                <button class="popup-content-close" onclick="closePopup('settingsPopup')"></button>
+                <div id="popupContentLeft" class="popup-content-left">
+                    <h1 id="popupContentTitle" class="popup-content-title mini">Paramètres</h1>
+                </div>
+                <div id="popupContentRight" class="popup-content-right">
+                    <div class="popup-content-button" onclick="openPopup('changeProfilePicturePopup')">Changer photo de profil</div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="text" required="required">
+                        <span class="popup-content-inputbox-span">Changer nom d'utilisateur</span>
+                    </div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="password" required="required">
+                        <span class="popup-content-inputbox-span">Changer mot de passe</span>
+                    </div>
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="password" required="required">
+                        <span class="popup-content-inputbox-span">Mot de passe actuel</span>
+                    </div>
+                    <div class="popup-content-button">Enregistrer</div>
+                </div>
+                <div id="changeProfilePicturePopup" class="popup">
+                    <div class="popup-content mini">
+                        <button class="popup-content-close mini" onclick="closePopup('changeProfilePicturePopup')"></button>
+                        <div class="popup-content-center mini">
+                            <label id="imagePreview" class="file-upload-button">
+                                <input id="profileImageInput" class="file-upload-input" name="profile_image" type="file">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Editor popup -->
+        <div id="editorPopup" class="popup">
+            <div class="popup-content">
+                <div class="popup-content-center">
+                    <div class="popup-content-close special" onclick="closePopup('editorPopup')"></div>
+                    <h1 class="popup-content-title special">Nouveau post</h1>
+                    <textarea name="newPostArea" id="newPostArea" cols="30" rows="10" class="popup-content-textarea"></textarea>
+                    <footer class="popup-content-footer">
+                        <div class="popup-content-footer-buttons">
+                            <button class="popup-content-footer-button">Image</button>
+                            <button class="popup-content-footer-button">Gras</button>
+                            <button class="popup-content-footer-button">Italique</button>
+                            <button class="popup-content-footer-button">Souligné</button>
+                        </div>
+                        <button class="popup-content-footer-send">Publier</button>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+        <!-- Report popup -->
+        <div id="reportPopup" class="popup">
+            <div class="popup-content report">
+                <button class="popup-content-close mini" onclick="closePopup('reportPopup')"></button>
+                <div class="popup-content-center report">
+                    <div class="popup-content-inputbox">
+                        <input class="popup-content-inputbox-input" type="text" required="required">
+                        <span class="popup-content-inputbox-span" >Raison du report</span>
+                    </div>
+                    <button class="popup-content-button">Envoyer</button>
+                </div>
+            </div>
+        </div>
+        <!-- Userpage popup -->
+        <div id="userPagePopup" class="popup">
+            <div class="popup-content">
+                <button class="popup-content-close very special" onclick="closePopup('userPagePopup')"></button>
+                <div class="popup-content-center special">
+                    <header class="popup-content-header">
+                        <img  class="popup-message-header-picture" src="./templatesContent/profil.png" alt="{insert username} profile picture">
+                        <div class="popup-message-header-infos">
+                            <p>Asteroidus</p>
+                            <p>11.9.2001</p>
+                        </div>
+                        <button class="follow">S'abboner</button>
+                        <!-- If user is following add class followed and change the text to "Abboné" -->
+                    </header>
+                    <main class="popup-content-main">
+                        <div class="post-scroll inside">
+                            <div class="post-message">
+                                <header class="post-message-header">
+                                    <img class="post-message-header-picture" src="./templatesContent/profil.png" alt="{insert username} profile picture" onclick="openPopup('userPagePopup')">
+                                    <div class="post-message-header-infos">
+                                        <p>Asteroidus</p>
+                                        <p>11.9.2001</p>
+                                    </div>
+                                </header>
+                                <div class="post-message-text">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda dolores architecto veritatis. Recusandae ad consectetur culpa ipsam ab eaque unde dolor? Eveniet officia, sint quibusdam adipisci enim sapiente exercitationem fuga?
+                                    <img class="post-message-img" src="./templatesContent/space.jpeg" alt="post image">                            
+                                </div>
+                                <footer class="post-message-footer">
+                                    <button class="post-message-footer-button except"><img class="post-message-footer-button-img" src="./svgs/comments.svg" alt="comment button"></button>
+                                    <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/expandWhite.svg" alt="comment button"><p class="post-message-footer-button-text">2</p></button>
+                                    <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/middlevote.svg" alt="comment button"><p class="post-message-footer-button-text">6</p></button>
+                                    <button class="post-message-footer-button"><img class="post-message-footer-button-img" src="./svgs/downvote.svg" alt="comment button"><p class="post-message-footer-button-text">8</p></button>
+                                    <button class="post-message-footer-button except" onclick="openPopup('reportPopup')"><img class="post-message-footer-button-img" src="./svgs/report.svg" alt="comment button"></button>
+                                    <!-- <button id="postMessageFooterButtonDelete" class="post-message-footer-button"><img class="post-footer-button-img" src="./svgs/delete.svg" alt="comment button"></button> -->
+                                </footer>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <!-- Comments popup -->
+        <div id="commentsPopup" class="popup">
+            <div class="popup-content">
+                <button class="popup-content-close" onclick="closePopup('commentsPopup')"></button>
+                <div class="popup-content-left">
+                    <h2 class="popup-content-title">Commentaires</h2>
+                </div>
+                <div class="popup-content-right">
+                    <div id="chatScroll" class="chat-scroll inside">
+                        <div class="chat-message">
+                            <header class="chat-message-header">
+                                <img  class="chat-message-header-picture" src="./templatesContent/profil.png" alt="{insert username} profile picture">
+                                <div class="chat-message-header-infos">
+                                    <p>Asteroidus</p>
+                                    <p>11.9.2001</p>
+                                </div>
+                            </header>
+                            <div class="chat-message-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                        </div>
+                        <div class="chat-message stranger">
+                            <header class="chat-message-header">
+                                <img  class="chat-message-header-picture stranger" src="./templatesContent/profil2.jpg" alt="{insert username} profile picture">
+                                <div class="chat-message-header-infos stranger">
+                                    <p>Judemont</p>
+                                    <p>11.9.2001</p>
+                                </div>
+                            </header>
+                            <div class="chat-message-text stranger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                        </div>
+                        <div class="chat-message stranger">
+                            <header class="chat-message-header">
+                                <img  class="chat-message-header-picture stranger" src="./templatesContent/profil2.jpg" alt="{insert username} profile picture">
+                                <div class="chat-message-header-infos stranger">
+                                    <p>Judemont</p>
+                                    <p>11.9.2001</p>
+                                </div>
+                            </header>
+                            <div class="chat-message-text stranger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                        </div>
+                        <div class="chat-message stranger">
+                            <header class="chat-message-header">
+                                <img  class="chat-message-header-picture stranger" src="./templatesContent/profil2.jpg" alt="{insert username} profile picture">
+                                <div class="chat-message-header-infos stranger">
+                                    <p>Judemont</p>
+                                    <p>11.9.2001</p>
+                                </div>
+                            </header>
+                            <div class="chat-message-text stranger">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor, eaque.</div>
+                        </div>
+                    </div>
+                    <footer id="chatFooter" class="chat-footer inside">
+                        <input class="chat-footer-input" type="text" placeholder="Message">
+                        <button class="chat-footer-button"><img class="chat-footer-button-img" src="./svgs/send.svg" alt="send button"></button>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
